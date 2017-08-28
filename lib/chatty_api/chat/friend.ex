@@ -7,14 +7,12 @@ defmodule ChattyApi.Chat.Friend do
   schema "friends" do
     belongs_to :user, ChattyApi.Account.User
     belongs_to :friend, ChattyApi.Account.User
-
-    timestamps()
   end
 
   @doc false
   def changeset(%Friend{} = friend, attrs) do
     friend
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:user_id, :friend_id])
+    |> validate_required([:user_id, :friend_id])
   end
 end

@@ -9,7 +9,7 @@ defmodule ChattyApi.Account.User do
     field :password, :string
     field :username, :string
     has_many :messages, ChattyApi.Chat.Message
-    many_to_many :groups, ChattyApi.Chat.Group, join_through: "group_users"
+    many_to_many :groups, ChattyApi.Chat.Group, join_through: "group_users", on_delete: :delete_all
     many_to_many :friends, ChattyApi.Account.User, join_through: ChattyApi.Chat.Friend, join_keys: [user_id: :id, friend_id: :id]
     timestamps()
   end

@@ -27,7 +27,7 @@ defmodule ChattyApiWeb.Router do
   forward "/graphql", Absinthe.Plug,
           schema: ChattyApi.Schema
   forward "/graphiql", Absinthe.Plug.GraphiQL,
-          schema: ChattyApi.Schema
-#          socket: ChattyApiWeb.UserSocket,
-#          interface: :simple
+          schema: ChattyApi.Schema,
+          socket: ChattyApiWeb.UserSocket,
+          interface: :simple
 end

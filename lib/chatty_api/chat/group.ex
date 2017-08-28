@@ -7,7 +7,7 @@ defmodule ChattyApi.Chat.Group do
   schema "groups" do
     field :name, :string
     has_many :messages, ChattyApi.Chat.Message
-    many_to_many :users, ChattyApi.Account.User, join_through: "group_users"
+    many_to_many :users, ChattyApi.Account.User, join_through: "group_users", on_delete: :delete_all, on_replace: :delete
 
     timestamps()
   end

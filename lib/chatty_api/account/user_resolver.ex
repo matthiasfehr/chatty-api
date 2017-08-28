@@ -5,9 +5,9 @@ defmodule ChattyApi.Account.UserResolver do
     {:ok, Repo.all(User)}
   end
 
-  def find(%{id: id}, _info) do
-    case Repo.get(User, id) do
-      nil -> {:error, "User id #{id} not found"}
+  def find(user_query, _info) do
+    case Repo.get_by(User, user_query) do
+      nil -> {:error, "User not found"}
       user -> {:ok, user}
     end
   end
